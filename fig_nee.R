@@ -24,7 +24,7 @@ library(gridExtra)
 #### READ IN COUNTRY-LEVEL DATA  
  
  
-fcdat<-read.csv("../data/country_level_nee_combined.csv")
+fcdat<-read.csv("country_level_nee_combined.csv")
 
 
 #### colours
@@ -125,11 +125,10 @@ palette3 <- colorRampPalette(c("Dark Green", "White", "Blue"))
 
 library(plotly)
 
-p<-plot_ly(fcdat, x = ~RCP85L10EEZ, y = ~rcp85,, type="scatter", text = paste("Country: ", fcdat$C_Name,"HDI: ", fcdat$HDI,"FD: ", fcdat$Fish_Dep,"AD: ", fcdat$Agri_Dep),
-          mode = "markers", color = ~Agri_Dep, size = ~log(Fish_Dep+1))
+p<-plot_ly(fcdat, x = ~RCP85L10EEZ, y = ~rcp85, type="scatter", text = paste("Country: ", fcdat$C_Name,"HDI: ", fcdat$HDI,"FD: ", fcdat$Fish_Dep,"AD: ", fcdat$Agri_Dep),mode = "markers", color = ~Agri_Dep, size = ~log(Fish_Dep+1))
   
 p <- p %>% layout(xaxis = list(title = "Mean Relative Change Fish"), 
            yaxis = list(title = "Mean Relative Change Crops"))
-           #note: not log10 change here
+           #note: log10 change 
 p
 
